@@ -2,7 +2,7 @@
 
 public record CreateProductRequest(string Name, List<string> Category, string Description, string ImageFile, decimal Price);
 
-public record CreateProductResponse(Guid id);
+public record CreateProductResponse(Guid Id);
 public class CreateProductEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
@@ -13,9 +13,9 @@ public class CreateProductEndpoint : ICarterModule
 
             var result = await sender.Send(command);
 
-            var response = request.Adapt<CreateProductResponse>();
+            var response = result.Adapt<CreateProductResponse>();
 
-            return Results.Created($"/products/{response.id}", response);
+            return Results.Created($"/products/{response.Id}", response);
         })
             .WithName("CreateProduct")
             .Produces<CreateProductResponse>(StatusCodes.Status201Created)

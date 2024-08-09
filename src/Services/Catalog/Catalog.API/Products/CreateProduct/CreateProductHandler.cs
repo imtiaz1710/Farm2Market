@@ -18,6 +18,6 @@ internal class CreateProductHandler : ICommandHandler<CreateProductCommand, Crea
             ImageFile = command.ImageFile
         };
 
-        return new CreateProductResult(new Guid());
+        return new CreateProductResult(Guid.NewGuid());
     }
 }

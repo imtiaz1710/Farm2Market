@@ -4,6 +4,14 @@ namespace Catalog.API.Products.DeleteProduct;
 public record DeleteProductCommand(Guid Id): ICommand<DeleteProductResult>;
 public record DeleteProductResult(bool IsDeleted);
 
+public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommand>
+{
+    public DeleteProductCommandValidator()
+    {
+        RuleFor(command => command.Id).NotEmpty().WithMessage("Product Id is required");
+    }
+}
+
 internal class DeleteProductCommandHandler(IDocumentSession session, ILogger<DeleteProductCommandHandler> logger) : ICommandHandler<DeleteProductCommand, DeleteProductResult>
 {
     public async Task<DeleteProductResult> Handle(DeleteProductCommand command, CancellationToken cancellationToken)

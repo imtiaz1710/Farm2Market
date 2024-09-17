@@ -9,6 +9,10 @@ global using Basket.API.Data;
 global using FluentValidation;
 global using BuildingBlocks.Behaviors;
 global using BuildingBlocks.Exceptions.Handler;
+global using Microsoft.Extensions.Caching.Distributed;
+global using System.Text.Json;
+
+
 
 
 

@@ -36,6 +36,22 @@ namespace Discount.Grpc.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Coupons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 70,
+                            Description = "Deshi Rice",
+                            ProductName = "Rice"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Amount = 50,
+                            Description = "Insaf Oil",
+                            ProductName = "Oil"
+                        });
                 });
 #pragma warning restore 612, 618
         }

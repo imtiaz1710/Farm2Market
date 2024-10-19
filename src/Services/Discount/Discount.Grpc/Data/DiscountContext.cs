@@ -16,8 +16,6 @@ namespace Discount.Grpc.Data
                 new Coupon() { Id = 1, ProductName = "Rice", Description = "Deshi Rice", Amount = 70 },
                 new Coupon() { Id = 2, ProductName = "Oil", Description = "Insaf Oil", Amount = 50 }
             );
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

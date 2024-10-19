@@ -60,7 +60,7 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
     {
         var coupon = await dbContext.Coupons.FirstOrDefaultAsync(c => c.ProductName == request.ProductName);
 
-        if(coupon == null) throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid Request"));
+        if(coupon == null) throw new RpcException(new Status(StatusCode.InvalidArgument, "Coupon Not Found"));
 
         dbContext.Coupons.Remove(coupon);
 

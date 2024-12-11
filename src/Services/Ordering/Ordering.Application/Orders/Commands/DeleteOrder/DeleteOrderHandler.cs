@@ -24,4 +24,4 @@ public class DeleteOrderHandler(IApplicationDbContext dbContext)
 
         return new DeleteOrderResult(true);
     }
-}}
+}

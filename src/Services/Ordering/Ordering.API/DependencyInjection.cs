@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Exceptions.Handler;
-using Carter;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace Ordering.API;
 
@@ -14,11 +15,17 @@ public static class DependencyInjection
         return services;
     }
 
-    public static WebApplication UseAPIServices(this  WebApplication app)
+    public static WebApplication UseAPIServices(this WebApplication app)
     {
         app.MapCarter();
 
         app.UseExceptionHandler(options => { });
+
+        app.UseHealthChecks("/health",
+           new HealthCheckOptions
+           {
+               ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+           });
         return app;
     }
 }
